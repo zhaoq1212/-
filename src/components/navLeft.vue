@@ -1,0 +1,43 @@
+<template>
+  <div>
+    <h1 class="title">蚂蚁金融后台管理系统</h1>
+    <el-menu
+      default-active="2"
+      class="el-menu-vertical-demo"
+      background-color="#001529"
+      text-color="#fff"
+      active-text-color="#ffd04b"
+      :router="true"
+    >
+      <menus v-for="(item,index) in menuData" :menu="item" :key="index"></menus>
+    </el-menu>
+  </div>
+</template>
+
+<script>
+import menus from "./menu";
+import { get } from "@/utils/http";
+export default {
+  data() {
+    return {
+      menuData: []
+    };
+  },
+  mounted() {
+    get("/menu").then(res => {
+      this.menuData = res.data;
+    });
+  },
+  components: {
+    menus
+  }
+};
+</script>
+
+<style  scoped>
+.title {
+  line-height: 50px;
+  color: #fff;
+  text-align: center;
+}
+</style>
