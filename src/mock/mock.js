@@ -162,7 +162,7 @@ Mock.mock('localhost:8080/in', 'get', () => {
 Mock.mock('localhost:8080/all', 'get', () => {
     // const { password, username } = JSON.parse(req.body)
     return {
-        code: 204,
+        code: 205,
         success: true,
         message: "成功",
         data: Mock.mock({
